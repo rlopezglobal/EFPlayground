@@ -18,6 +18,7 @@ public class DbInitializer
             context.VideoGames.Add(new VideoGameDb {Title = "Final Fantasy VII", Genre = "RPG", Price = (decimal) 59.99, ReleaseDate = 1997 });
             context.VideoGames.Add(new VideoGameDb {Title = "ChopLifter", Genre = "Action", Price = (decimal) 59.99, ReleaseDate = 1986 }); 
             context.VideoGames.Add(new VideoGameDb {Title = "Metroid", Genre = "Action", Price = (decimal) 59.99, ReleaseDate = 1991 });
+            context.VideoGames.Add(new VideoGameDb {Title = "DoubleDragon", Genre = "Action", Price = (decimal) 59.99, ReleaseDate = 1991 });
             context.SaveChangesAsync();
         }
     }
