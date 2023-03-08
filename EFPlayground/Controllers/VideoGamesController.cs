@@ -1,5 +1,6 @@
 
 using EFPlayground.DbModels;
+using EFPlayground.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,7 +30,18 @@ public class VideoGamesController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<VideoGameDb>>> GetVideoGames()
     {
-        return await _context.VideoGames.ToListAsync();
+        var videoGames = await _context.VideoGames.ToListAsync();
+
+        var videoGameDto = videoGames.Select(v => new VideoGameDto
+        {
+            Id = v.Id,
+            Title = v.Title,
+            Genre = v.Genre,
+            Price = v.Price,
+            ReleaseDate = v.ReleaseDate
+        });
+
+        return Ok(videoGameDto);
     }
     
     /// <summary>
@@ -48,7 +60,16 @@ public class VideoGamesController : ControllerBase
             return NotFound();
         }
         
-        return videoGame;
+        var videoGameDto = new VideoGameDto
+        {
+            Id = videoGame.Id,
+            Title = videoGame.Title,
+            Genre = videoGame.Genre,
+            Price = videoGame.Price,
+            ReleaseDate = videoGame.ReleaseDate
+        };
+
+        return Ok(videoGameDto);
     }
     
     /// <summary>

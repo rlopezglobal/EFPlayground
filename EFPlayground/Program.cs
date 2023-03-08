@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using AutoMapper;
 
 var builder = WebApplication.CreateBuilder();
 
@@ -13,7 +14,23 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnCh
 builder.Services.AddControllers();
 builder.Services.AddDbContext<VideoGameDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("VideoGameDbConnection")));
+builder.Services.AddAutoMapper(typeof(VideoGameProfile));
 
+
+// Add DbInitializer to ensure the database is created and contains sample data
+var serviceScopeFactory = builder.Services.BuildServiceProvider().GetRequiredService<IServiceScopeFactory>();
+using var scope = serviceScopeFactory.CreateScope();
+var services = scope.ServiceProvider;
+try
+{
+    var context = services.GetRequiredService<VideoGameDbContext>();
+    await DbInitializer.InitializeAsync(context);
+}
+catch (Exception ex)
+{
+    var logger = services.GetRequiredService<ILogger<Program>>();
+    logger.LogError(ex, "An error occurred while seeding the database.");
+}
 
 // Add swagger
 builder.Services.AddSwaggerGen(c =>
