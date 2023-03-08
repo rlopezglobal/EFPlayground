@@ -80,6 +80,9 @@ public class VideoGamesController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<VideoGameDb>> PostVideoGame(VideoGameDb videoGame)
     {
+        // Make sure the Id property is not set
+        videoGame.Id = 0;
+        
         _context.VideoGames.Add(videoGame);
         await _context.SaveChangesAsync();
         return CreatedAtAction(nameof(GetVideoGame), new {id = videoGame.Id}, videoGame);
@@ -92,26 +95,22 @@ public class VideoGamesController : ControllerBase
     /// <param name="videoGame">The updated video game object</param>
     /// <returns>An IActionResult indicating the success of the update operation</returns>
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateVideoGame(int id, [FromBody] VideoGameDb videoGame)
+    public async Task<IActionResult> UpdateVideoGame(int id, [FromBody] UpdateVideoGameDto videoGameDto)
     {
-        
-        if (id != videoGame.Id)
-        {
-            return BadRequest();
-        }
-        
+        // retrieve existing video game from database
         var existingVideoGame = await _context.VideoGames.FindAsync(id);
-        
+    
         if (existingVideoGame == null)
         {
             return NotFound();
         }
-        
-        existingVideoGame.Title = videoGame.Title;
-        existingVideoGame.Genre = videoGame.Genre;
-        existingVideoGame.Price = videoGame.Price;
-        existingVideoGame.ReleaseDate = videoGame.ReleaseDate;
-        
+    
+        // update existing video game with values from DTO
+        existingVideoGame.Title = videoGameDto.Title;
+        existingVideoGame.Genre = videoGameDto.Genre;
+        existingVideoGame.Price = videoGameDto.Price;
+        existingVideoGame.ReleaseDate = videoGameDto.ReleaseDate;
+    
         _context.VideoGames.Update(existingVideoGame);
         await _context.SaveChangesAsync();
         return NoContent();

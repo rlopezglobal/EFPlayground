@@ -108,10 +108,8 @@ namespace EFPlayground.Controllers
         }
       };
 
-      return Ok(dto);
+      //return Ok(dto);
 
-
-      /*
       var options = new JsonSerializerOptions
       {
         ReferenceHandler = ReferenceHandler.Preserve,
@@ -121,7 +119,7 @@ namespace EFPlayground.Controllers
 
       var json = JsonSerializer.Serialize(videoGameReview, options);
 
-      return Content(json, "application/json");*/
+      return Content(json, "application/json");
     }
 
     /// <summary>
