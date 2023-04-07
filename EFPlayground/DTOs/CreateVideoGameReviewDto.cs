@@ -1,6 +1,6 @@
 namespace EFPlayground.DTOs;
 
-public class CreateVideoGameReviewDto
+public class CreateVideoGameReviewDto 
 {
     public int VideoGameId { get; set; }
     public string ReviewerName { get; set; }

@@ -1,6 +1,6 @@
 namespace EFPlayground.DTOs;
 
-public class UpdateVideoGameDto
+public class UpdateVideoGameDto 
 {
     public string Title { get; set; }
     public string Genre { get; set; }

@@ -19,7 +19,7 @@ namespace EFPlayground.DbModels
         public int Id { get; set; }
 
         /// <summary>
-        /// The title of the video game.
+        /// The title of the video game. 
         /// </summary>
         public string Title { get; set; }
 

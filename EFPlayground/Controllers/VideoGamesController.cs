@@ -15,7 +15,7 @@ public class VideoGamesController : ControllerBase
     private readonly VideoGameDbContext _context;
     
     /// <summary>
-    /// Constructor that injects the VideoGameDbContext
+    /// Constructor that injects the VideoGameDbContext 
     /// </summary>
     // <param name="context">The VideoGameDbContext to use</param>
     public VideoGamesController(VideoGameDbContext context)

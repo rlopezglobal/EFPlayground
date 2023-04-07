@@ -30,7 +30,7 @@ namespace EFPlayground.Controllers
     }
 
     /// <summary>
-    /// Endpoint to get all video game reviews
+    /// Endpoint to get all video game reviews 
     /// </summary>
     /// <returns></returns>
     [HttpGet]

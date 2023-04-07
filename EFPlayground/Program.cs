@@ -5,7 +5,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using AutoMapper;
 
-var builder = WebApplication.CreateBuilder();
+var builder = WebApplication.CreateBuilder(); 
 
 // Load configuration from appsettings.json
 builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);

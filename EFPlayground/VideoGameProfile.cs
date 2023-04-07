@@ -4,7 +4,7 @@ using EFPlayground.DTOs;
 
 namespace EFPlayground;
 
-public class VideoGameProfile : Profile
+public class VideoGameProfile : Profile 
 {
     public VideoGameProfile()
     {

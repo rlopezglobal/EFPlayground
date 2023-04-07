@@ -13,7 +13,7 @@ namespace EFPlayground
             await context.Database.EnsureDeletedAsync();
             await context.Database.EnsureCreatedAsync();
 
-            // Add sample data to the VideoGames database if none exists
+            // Add sample data to the VideoGames database if none exists 
             if (!context.VideoGames.Any())
             {
                 context.VideoGames.Add(new VideoGameDb { Title = "Super Mario Bros", Genre = "Platformer", Price = 59.99m, ReleaseDate = 1985 });

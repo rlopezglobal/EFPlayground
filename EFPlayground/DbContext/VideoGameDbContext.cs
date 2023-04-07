@@ -12,7 +12,7 @@ namespace EFPlayground
         public DbSet<VideoGameDb> VideoGames { get; set; }
         public DbSet<VideoGameReviewDb> VideoGameReviews { get; set; } // <-- Add semicolon here
         
-        // Constructor for the VideoGameDbContext that takes in a DbContextOptions object
+        // Constructor for the VideoGameDbContext that takes in a DbContextOptions object 
         public VideoGameDbContext(DbContextOptions<VideoGameDbContext> options) : base(options)
         {
         }

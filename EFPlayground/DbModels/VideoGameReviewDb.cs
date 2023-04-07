@@ -23,7 +23,7 @@ public class VideoGameReviewDb
     public int VideoGameId { get; set; }
     
     /// <summary>
-    /// Gets or sets the navigation property that represents the associated video game entity.
+    /// Gets or sets the navigation property that represents the associated video game entity. 
     /// </summary>
     [Required]
     public VideoGameDb VideoGame { get; set; }

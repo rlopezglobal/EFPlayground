@@ -2,7 +2,7 @@ namespace EFPlayground.DTOs;
 
 public class GetVideoGameReview
 {
-    public class VideoGameReviewDto
+    public class VideoGameReviewDto 
     {
         public int Id { get; set; }
         public string ReviewerName { get; set; }
